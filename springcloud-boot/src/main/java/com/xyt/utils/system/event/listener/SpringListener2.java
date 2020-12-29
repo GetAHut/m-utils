@@ -1,4 +1,4 @@
-package com.xyt.system.event.listener;
+package com.xyt.utils.system.event.listener;
 
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;

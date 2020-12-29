@@ -1,4 +1,4 @@
-package com.xyt.system.event;
+package com.xyt.utils.system.event;
 
 import org.springframework.context.ApplicationEvent;
 

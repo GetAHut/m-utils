@@ -1,4 +1,4 @@
-package com.xyt.servlet;
+package com.xyt.utils.servlet;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;

@@ -1,4 +1,4 @@
-package com.xyt.servlet;
+package com.xyt.utils.servlet;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;

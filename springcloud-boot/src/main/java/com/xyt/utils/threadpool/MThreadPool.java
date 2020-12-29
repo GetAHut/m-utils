@@ -1,4 +1,4 @@
-package com.xyt.threadpool;
+package com.xyt.utils.threadpool;
 
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;

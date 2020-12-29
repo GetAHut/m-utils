@@ -1,4 +1,4 @@
-package com.xyt.http;
+package com.xyt.utils.http;
 
 import java.io.Serializable;
 
