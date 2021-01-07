@@ -8,8 +8,10 @@
     <artifactId>springcloud-demo</artifactId>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>springcloud-provider</module>
+        <module>springcloud-service</module>
         <module>springcloud-boot</module>
+        <module>springcloud-eureka-server8081</module>
+        <module>springcloud-eureka-client8082</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -20,6 +22,9 @@
         <spring-cloud-alibaba-version>0.2.2.RELEASE</spring-cloud-alibaba-version>
         <lombok.version>1.18.12</lombok.version>
         <mysql.version>8.0.16</mysql.version>
+        <springboot.actuator.version>2.3.0.RELEASE</springboot.actuator.version>
+        <hystrix.version>2.2.1.RELEASE</hystrix.version>
+        <eureka.version>2.2.1.RELEASE</eureka.version>
     </properties>
 
 
@@ -47,11 +52,25 @@
                 <scope>import</scope>
             </dependency>
 
-            <!-- 引入配置中心 -->
+            <!-- 引入配置中心 nacos -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
             </dependency>
+
+            <!-- 引入配置中心 eureka -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+                <version>${eureka.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+                <version>${eureka.version}</version>
+            </dependency>
+
             <!-- 引入注册中心 -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
@@ -62,6 +81,26 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+            </dependency>
+
+            <!-- 健康框架 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-actuator</artifactId>
+                <version>${springboot.actuator.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>2.2.0.RELEASE</version>
+            </dependency>
+
+            <!-- 熔断器 -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+                <version>${hystrix.version}</version>
             </dependency>
 
             <!-- lombok -->
