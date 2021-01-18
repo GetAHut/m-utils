@@ -12,6 +12,8 @@
         <module>springcloud-boot</module>
         <module>springcloud-eureka-server8081</module>
         <module>springcloud-eureka-client8082</module>
+        <module>springcloud-eureka-client8083</module>
+        <module>springcloud-nacos-server-8081</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -25,6 +27,8 @@
         <springboot.actuator.version>2.3.0.RELEASE</springboot.actuator.version>
         <hystrix.version>2.2.1.RELEASE</hystrix.version>
         <eureka.version>2.2.1.RELEASE</eureka.version>
+        <nacos.config.version>0.2.1.RELEASE</nacos.config.version>
+        <nacos.discovery.version>2.2.0.RELEASE</nacos.discovery.version>
     </properties>
 
 
@@ -56,6 +60,7 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+                <version>${nacos.config.version}</version>
             </dependency>
 
             <!-- 引入配置中心 eureka -->
@@ -73,8 +78,9 @@
 
             <!-- 引入注册中心 -->
             <dependency>
-                <groupId>org.springframework.cloud</groupId>
+                <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+                <version>${nacos.discovery.version}</version>
             </dependency>
 
             <!-- 引入流量管理框架 -->
