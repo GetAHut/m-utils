@@ -1,6 +1,8 @@
 package com.xyt.utils.servlet;
 
+import com.sun.javafx.fxml.builder.URLBuilder;
 import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -15,6 +17,7 @@ import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -82,6 +85,44 @@ public class HttpClientUtil {
      */
     public static String doGet(String url){
         return doGet(url, null);
+    }
+
+    /**
+     *  给请求头添加token
+     * @param url
+     * @param param
+     * @param token
+     * @return
+     */
+    public static String doGet(String url, Map<String, String> param, String token){
+
+        CloseableHttpClient httpClient = HttpClients.createDefault();
+        String resultString = "";
+        CloseableHttpResponse httpResponse = null;
+
+        try {
+            URIBuilder uriBuilder = new URIBuilder(url);
+            if (param != null){
+                for (String key : param.keySet()){
+                    uriBuilder.addParameter(key, param.get(key));
+                }
+            }
+
+            URI uri = uriBuilder.build();
+            HttpGet get = new HttpGet(uri);
+            httpResponse = httpClient.execute(get);
+            //token
+            httpResponse.addHeader("token", token);
+            //判断状态码
+            if (httpResponse.getStatusLine().getStatusCode() == 200){
+                resultString = EntityUtils.toString(httpResponse.getEntity(), "UTF-8");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
     /**

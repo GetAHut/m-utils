@@ -3,44 +3,55 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.xyt</groupId>
     <artifactId>springcloud-demo</artifactId>
     <version>1.0-SNAPSHOT</version>
+
     <modules>
         <module>springcloud-service</module>
         <module>springcloud-boot</module>
         <module>springcloud-eureka-server8081</module>
         <module>springcloud-eureka-client8082</module>
         <module>springcloud-eureka-client8083</module>
-        <module>springcloud-nacos-server-8081</module>
+        <module>springcloud-nacos-client-8081</module>
+        <module>springcloud-security-demo</module>
     </modules>
     <packaging>pom</packaging>
 
     <properties>
         <jdk.version>1.8</jdk.version>
         <spring-cloud-version>Hoxton.SR4</spring-cloud-version>
-        <spring-boot-version>2.2.0.RELEASE</spring-boot-version>
+        <spring-boot.version>2.2.0.RELEASE</spring-boot.version>
         <spring-cloud-alibaba-version>0.2.2.RELEASE</spring-cloud-alibaba-version>
         <lombok.version>1.18.12</lombok.version>
         <mysql.version>8.0.16</mysql.version>
-        <springboot.actuator.version>2.3.0.RELEASE</springboot.actuator.version>
+        <springboot-actuator.version>2.3.0.RELEASE</springboot-actuator.version>
         <hystrix.version>2.2.1.RELEASE</hystrix.version>
         <eureka.version>2.2.1.RELEASE</eureka.version>
         <nacos.config.version>0.2.1.RELEASE</nacos.config.version>
         <nacos.discovery.version>2.2.0.RELEASE</nacos.discovery.version>
+        <springboot-security.version>2.3.2.RELEASE</springboot-security.version>
+        <druid.version>1.1.16</druid.version>
     </properties>
 
+    <dependencies>
 
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.0.RELEASE</version>
-    </parent>
+    </dependencies>
+
 
     <!-- 依赖声明 -->
     <dependencyManagement>
         <dependencies>
+
+            <!-- 增加springboot依赖  无需parent boot -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
@@ -89,19 +100,6 @@
                 <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
             </dependency>
 
-            <!-- 健康框架 -->
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-actuator</artifactId>
-                <version>${springboot.actuator.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-web</artifactId>
-                <version>2.2.0.RELEASE</version>
-            </dependency>
-
             <!-- 熔断器 -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
@@ -120,6 +118,19 @@
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql.version}</version>
+            </dependency>
+
+            <!-- security -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-security</artifactId>
+                <version>2.2.1.RELEASE</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.version}</version>
             </dependency>
 
         </dependencies>

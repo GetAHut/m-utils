@@ -1,6 +1,6 @@
 package com.xyt.utils.http;
 
-import org.apache.commons.io.IOUtils;
+import io.micrometer.core.instrument.util.IOUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
